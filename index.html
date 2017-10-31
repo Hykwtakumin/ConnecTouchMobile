@@ -1,0 +1,50 @@
+<html>
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+$(function(){
+  // $("#test").html("Hello World!")
+  const linkURL = 'http://connectouch.org/links'
+  $.getJSON(
+    linkURL,
+    null,
+    function(data, status){
+      console.log(status);
+      $("#test").html(status + '!');
+      console.log(data)
+
+      $("table.tbl tbody").html("");
+
+      for(var index in data.release){
+$('<tr>'+
+'<th>'+data[index].time+'</th>'+
+'<td class="label"><span class="' +
+data[index].id + '">' +
+data[index].url +
+'</span></td>'+
+'<td><a href="' + data[index].url +
+'" target="' + data[index].time +
+'">' + data[index].id + '</a></td>'+
+'</tr>').appendTo('table.tbl tbody');
+}
+    });
+});
+</script>
+
+<head>
+<body>
+  <div id="test"></div>
+  <table cellpadding="0" cellspacing="0" border="0" class="tbl">
+<col width="15%" />
+<col width="15%" />
+<col width="70%" />
+<tbody>
+<tr>
+<th></th>
+<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
