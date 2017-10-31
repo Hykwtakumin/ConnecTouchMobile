@@ -16,6 +16,16 @@ $(function(){
 
       $("table.tbl tbody").html("");
 
+      const lastIndex = data.length - 1
+      if (lastIndex != -1) {
+        console.log(lastIndex)
+        const lastUserCardID = data[lastIndex].link[1]
+        const lastReaderID = data[lastIndex].link[0]
+        console.log(lastUserCardID)
+        console.log(lastReaderID)
+      } else {
+        console.log('lastIndex is null')
+      }
       for(var index in data.release){
 $('<tr>'+
 '<th>'+data[index].time+'</th>'+
